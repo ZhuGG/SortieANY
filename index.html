@@ -33,6 +33,9 @@
       --safe-bottom: env(safe-area-inset-bottom, 18px);
       --header-h: 176px;
       --page-pad: clamp(18px, 4vw, 48px);
+      --transition-fast: 0.18s ease;
+      --transition-med: 0.26s ease;
+      --focus-ring: 0 0 0 3px var(--input-focus-ring);
       font-size: 16px;
     }
     [data-theme="dark"] {
@@ -211,6 +214,9 @@
       margin: 0;
       min-height: 100vh;
       font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
       overflow-x: clip;
       overscroll-behavior-x: contain;
       background:
@@ -266,6 +272,8 @@
       border-radius: var(--radius-sm);
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
       border: 1px solid var(--ghost-border);
+      min-height: 116px;
+      box-shadow: 0 10px 20px rgba(5, 12, 26, 0.22);
     }
 
     .summary-card__label {
@@ -558,6 +566,13 @@
       background: none;
       color: inherit;
     }
+    button,
+    input,
+    select,
+    textarea {
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+        color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+    }
     .sr-only {
       position: absolute;
       width: 1px;
@@ -583,7 +598,7 @@
       font-weight: 600;
       font-size: 0.85rem;
       letter-spacing: 0.2px;
-      transition: transform 0.18s ease;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
     }
     .topbar__menu-btn .ico {
       font-size: 1.1rem;
@@ -611,6 +626,10 @@
       background: var(--header-icon-bg);
       border: 1px solid var(--header-icon-border);
       box-shadow: var(--header-icon-shadow);
+    }
+    .icon-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
     .icon-btn:active {
       transform: translateY(1px) scale(0.98);
@@ -656,8 +675,13 @@
       color: var(--muted);
       font-weight: 600;
       letter-spacing: 0.1px;
-      transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      transition: background var(--transition-fast), border-color var(--transition-fast),
+        color var(--transition-fast), box-shadow var(--transition-fast);
       white-space: nowrap;
+    }
+    .chip-row .chip:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
     .chip-row .chip.active {
       background: var(--accent-soft);
@@ -684,6 +708,11 @@
       color: var(--text);
       font-size: 0.9rem;
       box-shadow: var(--field-shadow);
+      outline: none;
+    }
+    .search input:focus {
+      border-color: var(--input-focus-border);
+      box-shadow: var(--focus-ring);
     }
     .search input::placeholder {
       color: var(--text-placeholder);
@@ -917,7 +946,12 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
-      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color var(--transition-fast), background var(--transition-fast),
+        color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .command-menu__smart:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
     .command-menu__smart:hover {
       border-color: var(--ghost-hover-border);
@@ -959,7 +993,12 @@
       color: var(--text-muted);
       font-weight: 600;
       text-align: left;
-      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color var(--transition-fast), background var(--transition-fast),
+        color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .command-menu__toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
     .command-menu__toggle:hover {
       border-color: var(--ghost-hover-border);
@@ -990,7 +1029,12 @@
       color: var(--text);
       text-align: left;
       overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+    .command-menu__action:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
     .command-menu__action:hover {
       transform: translateY(-2px);
@@ -1046,12 +1090,17 @@
       padding: 8px 14px;
       font-weight: 600;
       letter-spacing: 0.2px;
-      transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+      transition: border-color var(--transition-fast), color var(--transition-fast),
+        background var(--transition-fast);
     }
     .ghost-small:hover {
       background: var(--ghost-hover-bg);
       border-color: var(--ghost-hover-border);
       color: var(--ghost-hover-text);
+    }
+    .ghost-small:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
 
     #list {
@@ -1070,6 +1119,11 @@
       animation: cardFade 0.3s ease both;
       overflow: hidden;
       --card-flash: rgba(115, 135, 215, 0.32);
+      transition: transform var(--transition-med), box-shadow var(--transition-med);
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
     }
     .card[data-status="pause"] {
       --card-flash: rgba(242, 179, 106, 0.32);
@@ -1267,11 +1321,16 @@
       color: var(--btn-text);
       line-height: 1;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast), background var(--transition-fast);
     }
     .btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 12px 22px rgba(5, 12, 26, 0.35);
+    }
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
     .btn svg {
       width: 22px;
@@ -1335,6 +1394,10 @@
       letter-spacing: 0.2px;
       box-shadow: 0 12px 26px rgba(5, 10, 24, 0.35);
     }
+    .pill:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
 
     .fab {
       position: fixed;
@@ -1351,6 +1414,10 @@
     }
     .fab:active {
       transform: scale(0.96);
+    }
+    .fab:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
     }
 
     .sheet,
@@ -1423,6 +1490,10 @@
       color: var(--ghost-text);
       transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
     }
+    .ghost:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
     .ghost:hover {
       background: var(--ghost-hover-bg);
       border-color: var(--ghost-hover-border);
@@ -1437,6 +1508,17 @@
       background: var(--ghost-active-bg);
       border-color: var(--ghost-active-border);
       color: var(--ghost-active-text);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
     }
 
     body.dense .card {
