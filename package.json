@@ -1,0 +1,12 @@
+{
+  "name": "strate",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Un écosystème incrémental en pixel art, sans serveur ni dépendances.",
+  "scripts": {
+    "test": "node tests/simulation.test.mjs",
+    "check": "node --check app.js && node --check worker.js && node --check simulation.mjs",
+    "start": "python3 -m http.server 4173 --bind 127.0.0.1 --directory ."
+  }
+}
