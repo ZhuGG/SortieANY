@@ -1,0 +1,7 @@
+const DB='strate-living-world',STORE='worlds';let opening;
+export function database(){return opening||=new Promise((resolve,reject)=>{const r=indexedDB.open(DB,1);r.onupgradeneeded=()=>r.result.createObjectStore(STORE);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);r.onblocked=()=>reject(Error('Fermez les autres onglets STRATE pour autoriser la sauvegarde.'));});}
+export async function readWorld(key='active'){const db=await database();return new Promise((resolve,reject)=>{const r=db.transaction(STORE).objectStore(STORE).get(key);r.onsuccess=()=>resolve(r.result||null);r.onerror=()=>reject(r.error);});}
+let queue=Promise.resolve();
+export function writeWorld(data){queue=queue.catch(()=>{}).then(async()=>{const db=await database();return new Promise((resolve,reject)=>{const t=db.transaction(STORE,'readwrite'),store=t.objectStore(STORE);store.put(data,'active');t.oncomplete=()=>resolve();t.onerror=()=>reject(t.error);t.onabort=()=>reject(t.error||Error('Sauvegarde interrompue.'));});});return queue;}
+export function downloadWorld(data,name='strate-monde'){const url=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=name+'-'+(data.seed||'archive')+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+export function readLegacy(){try{return JSON.parse(localStorage.getItem('strate.world.v1')||'null');}catch{return null;}}

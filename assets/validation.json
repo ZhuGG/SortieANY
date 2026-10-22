@@ -1,0 +1,87 @@
+{
+  "images": [
+    {
+      "file": "fauna-weaver.png",
+      "size": [
+        288,
+        72
+      ],
+      "alpha": true,
+      "bytes": 3434
+    },
+    {
+      "file": "fauna-filter.png",
+      "size": [
+        288,
+        72
+      ],
+      "alpha": true,
+      "bytes": 4988
+    },
+    {
+      "file": "fauna-borer.png",
+      "size": [
+        288,
+        72
+      ],
+      "alpha": true,
+      "bytes": 3381
+    }
+  ],
+  "audio": [
+    {
+      "file": "ambient.mp3",
+      "duration": 20.035918367346937,
+      "sample_rate": 44100,
+      "channels": 2
+    },
+    {
+      "file": "division.mp3",
+      "duration": 1.5151020408163265,
+      "sample_rate": 44100,
+      "channels": 2
+    },
+    {
+      "file": "mutation.mp3",
+      "duration": 1.5151020408163265,
+      "sample_rate": 44100,
+      "channels": 2
+    },
+    {
+      "file": "impulse.mp3",
+      "duration": 1.5151020408163265,
+      "sample_rate": 44100,
+      "channels": 2
+    },
+    {
+      "file": "predation.mp3",
+      "duration": 1.5151020408163265,
+      "sample_rate": 44100,
+      "channels": 2
+    },
+    {
+      "file": "gas.mp3",
+      "duration": 1.5151020408163265,
+      "sample_rate": 44100,
+      "channels": 2
+    },
+    {
+      "file": "upgrade.mp3",
+      "duration": 1.5151020408163265,
+      "sample_rate": 44100,
+      "channels": 2
+    },
+    {
+      "file": "ability.mp3",
+      "duration": 1.5151020408163265,
+      "sample_rate": 44100,
+      "channels": 2
+    },
+    {
+      "file": "water.mp3",
+      "duration": 1.5151020408163265,
+      "sample_rate": 44100,
+      "channels": 2
+    }
+  ]
+}

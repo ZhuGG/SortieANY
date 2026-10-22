@@ -1,60 +1,50 @@
 <!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#302737">
-  <meta name="description" content="Un écosystème vivant en pixel art. Stimulez, adaptez et faites évoluer votre lignée dans les profondeurs d'un monde procédural.">
-  <title>STRATE · Une lignée, mille possibles</title>
-  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./style.css">
-</head>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#302737"><meta name="description" content="STRATE : un monde procédural en pixel art, façonné par les cellules, les organismes, l'eau et les gaz."><title>STRATE · Le monde devient vivant</title><link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./interface.css"></head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="./" aria-label="STRATE, accueil"><span class="brand-mark" aria-hidden="true">✣</span><span>STRATE<small>UNE LIGNÉE, MILLE POSSIBLES</small></span></a>
-    <div class="resources" aria-label="Ressources">
-      <div class="resource energy"><span class="resource-icon">ϟ</span><div><label>ÉNERGIE</label><strong id="energy">145</strong><small id="energy-rate">+0 / s</small></div><canvas id="spark-energy" width="70" height="24" aria-hidden="true"></canvas></div>
-      <div class="resource biomass"><span class="resource-icon">❋</span><div><label>BIOMASSE</label><strong id="biomass">90</strong><small id="biomass-rate">+0 / s</small></div><canvas id="spark-biomass" width="70" height="24" aria-hidden="true"></canvas></div>
-      <div class="resource knowledge"><span class="resource-icon">⌘</span><div><label>CONNAISSANCES</label><strong id="knowledge">36</strong><small id="knowledge-rate">+0 / s</small></div><canvas id="spark-knowledge" width="70" height="24" aria-hidden="true"></canvas></div>
-    </div>
-    <div class="top-actions"><span class="live-dot"></span><span id="save-status">MONDE VIVANT</span><button id="settings-button" class="icon-button" title="Sauvegarde et options" aria-label="Sauvegarde et options">☷</button></div>
-  </header>
+<header class="masthead">
+ <a class="brand" href="./"><span class="brand-glyph">✣</span><span>STRATE<small>LE MONDE DEVIENT VIVANT</small></span></a>
+ <div class="resource-strip">
+  <div class="resource" data-resource="energy"><span class="resource-symbol">ϟ</span><div><label>ÉNERGIE</label><strong id="energy">120</strong><small id="energy-rate">+0 / s</small></div><canvas id="chart-energy" width="54" height="22"></canvas></div>
+  <div class="resource" data-resource="biomass"><span class="resource-symbol">❋</span><div><label>MATIÈRE VIVANTE</label><strong id="biomass">85</strong><small id="biomass-rate">+0 / s</small></div><canvas id="chart-biomass" width="54" height="22"></canvas></div>
+  <div class="resource" data-resource="knowledge"><span class="resource-symbol">⌘</span><div><label>CONNAISSANCES</label><strong id="knowledge">30</strong><small id="knowledge-rate">+0 / s</small></div><canvas id="chart-knowledge" width="54" height="22"></canvas></div>
+ </div>
+ <div class="header-actions"><span class="alpha">ALPHA 0.2</span><button id="sound-toggle" class="square-button" aria-label="Couper le son" title="Son organique & rétro">♫</button><button id="settings-toggle" class="square-button" aria-label="Options et sauvegarde">☷</button></div>
+</header>
+<main class="workspace">
+ <aside class="atlas-panel">
+  <div class="expedition"><span class="eyebrow">UN ÉCOSYSTÈME À INVENTER</span><h1>Tout commence<br>par une cellule<span>.</span></h1><div class="world-reference"><span id="seed-label">MONDE 0427</span><span><i class="live-dot"></i> VIVANT</span></div></div>
+  <div class="panel-heading"><h2>Votre lignée</h2><span id="lineage-count">01 / 07</span></div><div id="lineages" class="lineages"></div>
+  <div class="panel-heading strata-heading"><h2>Atlas des profondeurs</h2><span>1 536 M</span></div><nav id="strata" aria-label="Les six strates"></nav>
+  <div class="atlas-bottom"><canvas id="minimap" width="64" height="384" aria-label="Minicarte : cliquer pour se déplacer"></canvas><div><span class="eyebrow">L’ÉCHELLE DU VIVANT</span><strong id="population">0</strong><span>cellules · <b id="fauna-count">0</b> organismes</span><div class="era-track"><i></i><i></i><i></i></div><p id="era-copy">La multicellularité<br>se dessine à 30 minutes.</p></div></div>
+ </aside>
 
-  <main class="dashboard">
-    <aside class="left-panel">
-      <section class="world-heading"><span class="eyebrow">EXPÉDITION 001</span><h1>L’aube du<br>vivant<span>.</span></h1><div class="seed-row"><span id="seed-label">MONDE #0427</span><span class="status-tag">EN ÉVOLUTION</span></div></section>
-      <section class="lineage-section"><div class="section-heading"><h2>Votre lignée</h2><span id="branch-count">01 / 07</span></div><div id="lineage-list"></div></section>
-      <section class="depth-section"><div class="section-heading"><h2>Les strates</h2><span>↓ 1 536 m</span></div><div id="strata-list"></div></section>
-      <section class="mini-section"><canvas id="minimap" width="128" height="256" aria-label="Minicarte du monde : cliquer pour déplacer la vue"></canvas><div class="mini-copy"><span class="eyebrow">UN MONDE EN MOUVEMENT</span><strong id="world-pop">0</strong><span>cellules vivantes</span><div class="mini-legend"><i></i> Votre lignée<br><i></i> Autres organismes</div><p>La vie trouve<br>toujours un chemin.</p></div></section>
-      <div class="left-bottom"><span class="pixel-cross">✣</span><span>OBSERVER. ADAPTER. ÉVOLUER.</span></div>
-    </aside>
+ <section class="simulation-panel">
+  <div class="simulation-toolbar"><div class="mode-tabs" role="group" aria-label="Couches de simulation"><button class="active" data-view="life">Vivant</button><button data-view="water">Eau</button><button data-view="gas">Gaz</button><button data-view="nutrient">Nutriments</button><button data-view="heat">Chaleur</button><button data-view="network">Réseaux</button></div><div class="zoom"><button id="zoom-out" aria-label="Dézoomer">−</button><span id="zoom-label">85 %</span><button id="zoom-in" aria-label="Zoomer">+</button></div></div>
+  <div class="world-viewport" id="viewport">
+   <canvas id="world" tabindex="0" aria-label="Monde vivant. Cliquez pour stimuler, Alt plus clic pour inspecter, molette pour descendre, Maj plus molette pour zoomer."></canvas>
+   <div class="biome-caption"><span class="eyebrow" id="biome-id">STRATE 01 · BASSINS DE LUMIÈRE</span><h2 id="biome-name">Le berceau</h2><p id="biome-environment">19 °C · photosynthèse · eau douce</p></div>
+   <div id="depth-ruler" aria-hidden="true"></div>
+   <div class="world-commands"><button id="home-button" aria-label="Revenir à votre colonie" title="Votre colonie">⌖</button><button id="pause-button" aria-label="Mettre en pause" title="Pause [P]">Ⅱ</button><button id="speed-button" title="Vitesse de simulation">×1</button></div>
+   <div class="selected-label" id="selected-label"><span class="tiny-swatch"></span><div><strong id="selected-name">Colonie originelle</strong><small id="selected-description">Une lignée, mille possibles</small></div><span>↗</span></div>
+   <div class="map-key" id="map-key"><span><i></i> VOTRE LIGNÉE</span><span><i></i> ESPÈCES SAUVAGES</span><span id="map-depth">−120 M</span></div>
+   <div id="target-hint" hidden>Ciblez le milieu près d’une colonie · Échap pour annuler</div>
+   <div id="floaters" aria-hidden="true"></div>
+   <div id="loading"><span class="loading-symbol">✣</span><h2>Le monde prend forme.</h2><p>Les premières circulations s’éveillent…</p></div>
+  </div>
+  <div class="impulse-dock"><div><span class="eyebrow">UN PETIT GESTE. MILLE POSSIBLES.</span><strong id="impulse-yield">+7 énergie <small>/ impulsion</small></strong><span class="dock-note" id="impulse-radius">Rayon biologique de 22 m</span></div><button id="stimulate" class="stimulate"><span>ϟ</span> STIMULER <kbd>ESPACE</kbd></button><div class="resonance"><div><span>RÉSONANCE</span><strong id="combo-value">×1,0</strong></div><div class="resonance-track"><i id="combo-bar"></i></div><small>Vos gestes se répondent.</small></div></div>
+  <div class="ability-dock"><div><span class="eyebrow">FAÇONNER PAR LE VIVANT</span><small>Choisir, puis cibler dans le monde.</small></div><button data-ability="oxygen" title="Chloroplastes niveau 1 · 25 biomasse et 45 énergie"><b>◌</b><span>Oxygéner<small>LIBÉRER DES BULLES</small></span><i>1</i></button><button data-ability="acid" title="Glandes sécrétrices niveau 1 · 35 biomasse et 45 énergie"><b>⋗</b><span>Dissoudre<small>OUVRIR LA ROCHE</small></span><i>2</i></button><button data-ability="weave" title="Adhésion cellulaire niveau 1 · 25 biomasse et 45 énergie"><b>⋈</b><span>Tisser<small>RALENTIR LE COURANT</small></span><i>3</i></button></div>
+  <div class="chronicle"><div class="panel-heading"><h2><i class="live-dot"></i> Journal du vivant</h2><span id="clock">CYCLE 001 · 00:00</span></div><div id="events" aria-live="polite"></div></div>
+ </section>
 
-    <section class="world-panel" aria-label="Simulation vivante">
-      <div class="world-toolbar"><div class="view-tabs" role="group" aria-label="Vue de la simulation"><button class="active" data-view="life">Écosystème</button><button data-view="nutrient">Nutriments</button><button data-view="oxygen">Oxygène</button><button data-view="heat">Chaleur</button></div><div class="zoom-controls"><button id="zoom-out" aria-label="Dézoomer">−</button><span id="zoom-label">100 %</span><button id="zoom-in" aria-label="Zoomer">+</button></div></div>
-      <div id="world-viewport" class="world-viewport">
-        <canvas id="world" tabindex="0" aria-label="Carte du monde. Cliquez pour stimuler, utilisez la molette pour descendre et Maj plus molette pour zoomer."></canvas>
-        <div class="world-title"><span class="eyebrow" id="biome-label">01 / EAUX PRIMORDIALES</span><div><span class="live-dot"></span><span id="world-clock">CYCLE 001</span></div></div>
-        <div id="depth-ruler" class="depth-ruler" aria-hidden="true"></div>
-        <div id="colony-tag" class="colony-tag"><span class="tag-dot"></span><div><strong id="colony-name">Colonie originelle</strong><small id="colony-tag-info">Votre première branche</small></div><span>↗</span></div>
-        <div class="map-tools"><button id="home-colony" title="Revenir à votre colonie" aria-label="Revenir à votre colonie">⌖</button><button id="pause-button" title="Mettre en pause" aria-label="Mettre en pause">Ⅱ</button><button id="speed-button" title="Vitesse de simulation">×1</button></div>
-        <div class="map-bottom"><span id="environment-summary">18 °C · lumière abondante</span><span>MOLETTE : EXPLORER <b>↓</b></span></div>
-        <div id="floaters" aria-hidden="true"></div>
-        <div id="world-loading">La vie s'éveille<span>Génération de votre écosystème…</span></div>
-      </div>
-      <div class="stimulation-bar"><div class="impulse-info"><span class="eyebrow">VOTRE IMPULSION</span><strong id="click-power">+8 énergie <span>/ clic</span></strong><small id="stim-detail">Accélère les cellules à proximité</small></div><button id="stimulate-button" class="stimulate-button"><span>ϟ</span> STIMULER <kbd>ESPACE</kbd></button><div class="combo-box"><div><span>RÉSONANCE</span><strong id="combo-value">×1,0</strong></div><div class="combo-track"><i id="combo-fill"></i></div><small id="combo-help">Les impulsions s'amplifient</small></div></div>
-      <div class="journal"><div class="section-heading"><h2><span class="tiny-dot"></span> Journal du vivant</h2><span id="event-count">0 ÉVÉNEMENT</span></div><div id="event-list" aria-live="polite"></div></div>
-    </section>
-
-    <aside class="right-panel">
-      <section class="objective"><div class="objective-top"><span class="eyebrow">PROCHAIN HORIZON</span><span id="objective-percent">0 %</span></div><h2 id="objective-title">Une lignée autonome</h2><p id="objective-copy">Débloquez votre première impulsion automatique.</p><div class="objective-progress"><i id="objective-fill"></i></div></section>
-      <div class="shop-tabs" role="tablist" aria-label="Évolution"><button class="active" id="tab-upgrades" role="tab" aria-selected="true" data-tab="upgrades">Améliorations</button><button id="tab-mutations" role="tab" aria-selected="false" data-tab="mutations">Mutations <span id="mutation-badge">0</span></button><button id="tab-genetics" role="tab" aria-selected="false" data-tab="genetics">Génétique</button></div>
-      <div id="shop-content" class="shop-content" role="tabpanel" aria-labelledby="tab-upgrades"></div>
-      <section class="inspector"><div class="section-heading"><h2>Colonie observée</h2><span id="selected-id">A—001</span></div><div class="specimen-heading"><canvas id="specimen" width="60" height="60" aria-hidden="true"></canvas><div><h3 id="inspect-name">Primordiales</h3><span id="inspect-traits">Photosynthèse · Aquatique</span><small id="inspect-status">● Lignée originelle</small></div></div><div class="colony-stats"><div><span>Population</span><strong id="inspect-pop">0</strong></div><div><span>Vitalité</span><strong id="inspect-health">—</strong></div><div><span>Génération</span><strong id="inspect-gen">01</strong></div></div><div class="env-bars" id="env-bars"></div><div class="inspector-foot"><span id="inspect-hint">Un milieu riche favorise les divisions.</span><button id="seed-colony" title="Implanter 24 cellules dans la zone observée">Implanter <span>35 ❋</span></button></div></section>
-    </aside>
-  </main>
-  <footer class="statusbar"><span><i class="live-dot"></i> <b id="sim-status">SIMULATION ACTIVE</b><span class="footer-separator">/</span><span id="sim-performance">12 cycles/s</span></span><span id="footer-tip">CLIC : STIMULER · ALT + CLIC : INSPECTER · GLISSER : EXPLORER</span><span>STRATE <b>α 0.1</b></span></footer>
-  <div id="toast" role="status"></div>
-
-  <dialog id="settings-dialog"><form method="dialog"><button class="dialog-close" aria-label="Fermer">×</button><span class="eyebrow">VOTRE ÉCOSYSTÈME</span><h2>Le vivant se souvient.</h2><p>Votre monde est sauvegardé sur cet appareil. Exportez-le pour le conserver ou le retrouver ailleurs.</p><div class="settings-actions"><button type="button" id="export-save">↓ Exporter la sauvegarde</button><label class="file-button">↑ Importer un monde<input type="file" id="import-save" accept="application/json,.json"></label><button type="button" id="manual-save">◇ Sauvegarder maintenant</button><button type="button" id="help-button">? Guide de l'explorateur</button></div><p class="settings-note">Hors ligne : jusqu'à 24 h de production, sans crise ni extinction. Aucune donnée n'est envoyée à un serveur.</p><button type="button" id="new-world" class="danger-button">Créer un nouveau monde…</button></form></dialog>
-  <dialog id="help-dialog"><form method="dialog"><button class="dialog-close" aria-label="Fermer">×</button><span class="eyebrow">GUIDE DE L'EXPLORATEUR</span><h2>Une cellule. Tout un monde.</h2><ol><li><b>Stimulez.</b> Cliquez dans l'eau ou appuyez sur Espace. Vos cellules accélèrent et chaque impulsion produit de l'énergie.</li><li><b>Investissez.</b> Achetez des améliorations. L'automatisation entretient une production passive ; la biomasse finance les nouvelles colonies.</li><li><b>Observez.</b> Alt + clic inspecte une espèce. Les vues Nutriments, Oxygène et Chaleur révèlent les conditions locales.</li><li><b>Adaptez.</b> Les divisions font apparaître des mutations. Stabilisez-les avec vos connaissances, puis combinez-les dans l'éditeur génétique.</li><li><b>Descendez.</b> La molette et la minicarte explorent les six strates. Implantez votre lignée dans des milieux compatibles.</li></ol><p>Les colonies consomment, se divisent, mutent et recyclent la matière. Une extinction conserve vos améliorations ; les spores de secours permettent de repartir.</p><button class="primary-button">Faire éclore la vie →</button></form></dialog>
-  <script type="module" src="./app.js"></script>
-</body></html>
+ <aside class="evolution-panel">
+  <section class="horizon"><div class="panel-heading"><span class="eyebrow">PROCHAIN CHANGEMENT D’ÉCHELLE</span><span id="horizon-percent">0 %</span></div><h2 id="horizon-title">Des cellules aux organismes.</h2><p id="horizon-copy">Développez l’adhésion. Le premier œuf devient possible à 30 min.</p><div class="horizon-track"><i id="horizon-bar"></i></div><div class="horizon-stages"><span>01 · CELLULES</span><span>02 · RÉSEAUX</span><span>03 · FAUNE</span></div></section>
+  <div class="evolution-tabs" role="tablist" aria-label="Progression"><button class="active" role="tab" aria-selected="true" data-tab="adaptations">Adaptations</button><button role="tab" aria-selected="false" data-tab="mutations">Mutations <b id="mutation-count">0</b></button><button role="tab" aria-selected="false" data-tab="fauna">Faune</button><button role="tab" aria-selected="false" data-tab="network">Gènes</button></div>
+  <div id="evolution-content" class="evolution-content" role="tabpanel"></div>
+  <section class="observer"><div class="panel-heading"><h2>À la loupe</h2><span id="observer-id">LIGNÉE 01</span></div><div class="observed-identity"><canvas id="portrait" width="80" height="64"></canvas><div><h3 id="observer-name">Primordiales</h3><span id="observer-trait">Photosynthèse · votre lignée</span><small id="observer-status">Un milieu, une infinité d’interactions.</small></div></div><div class="observer-stats"><div><span>Population</span><strong id="observer-pop">180</strong></div><div><span>Vitalité</span><strong id="observer-health">100 %</strong></div><div><span>Génération</span><strong id="observer-generation">01</strong></div></div><div id="environment-bars"></div><div class="observer-footer"><p id="diagnosis">Les nutriments et la lumière font grandir votre colonie.</p><button id="organism-ability" hidden>Activer</button><button id="implant">Implanter <span>40 ❋</span></button></div></section>
+ </aside>
+</main>
+<footer class="statusbar"><span><i class="live-dot"></i><b id="simulation-status">SIMULATION ACTIVE</b><em>/</em><span id="performance">12 cycles / s</span></span><span id="footer-instructions">CLIC · STIMULER <i>/</i> ALT + CLIC · INSPECTER <i>/</i> GLISSER · EXPLORER</span><span id="save-status">SAUVEGARDE LOCALE · INDEXEDDB</span></footer>
+<div id="toast" role="status"></div>
+<dialog id="settings"><button class="close-dialog" data-close="settings" aria-label="Fermer">×</button><span class="eyebrow">LE VIVANT SE SOUVIENT</span><h2>Votre monde, votre rythme.</h2><p>La simulation et les sauvegardes restent sur cet appareil. Pendant votre absence, jusqu’à 24 heures de production sont préservées, sans crise écologique.</p><div class="settings-actions"><button id="export">↓ Exporter ce monde</button><label>↑ Importer une partie α 0.2<input id="import" type="file" accept="application/json,.json"></label><button id="save-now">◇ Sauvegarder maintenant</button><button id="legacy-export" hidden>↶ Exporter l’archive α 0.1</button><button id="guide-toggle">? Guide du vivant</button></div><div class="sound-settings"><h3>Paysage sonore <span>FAL · ORGANIQUE & RÉTRO</span></h3><label>Volume général<input id="volume-master" type="range" min="0" max="100"></label><label>Effets biologiques<input id="volume-effects" type="range" min="0" max="100"></label><label>Ambiance aquatique<input id="volume-ambient" type="range" min="0" max="100"></label></div><button id="new-world" class="danger-button">Créer un nouveau monde…</button><p class="credit">Images & sons générés avec Fal. Pixel art et simulation composés pour STRATE.</p></dialog>
+<dialog id="guide"><button class="close-dialog" data-close="guide" aria-label="Fermer">×</button><span class="eyebrow">GUIDE DU VIVANT</span><h2>Tout est relié.</h2><ol><li><b>Stimulez votre lignée.</b> Un clic apporte de l’énergie et accélère les cellules proches. Les achats font pousser de vrais organes visibles.</li><li><b>Suivez la matière.</b> L’eau transporte la nourriture, les bulles remontent et les cadavres nourrissent les recycleuses. Les vues Eau, Gaz et Nutriments expliquent le milieu.</li><li><b>Adaptez une branche.</b> Sélectionnez une lignée à gauche : chaque adaptation change uniquement ses descendants. Stabilisez les mutations pour découvrir de nouvelles espèces.</li><li><b>Façonnez le monde.</b> Chloroplastes, glandes et adhésion débloquent les biocapacités. Choisissez une capacité puis cliquez près de votre colonie : oxygéner, dissoudre ou tisser.</li><li><b>Changez d’échelle.</b> À partir de 30 minutes de simulation, l’adhésion niveau 2 permet les Filtrants. Les Foreurs suivent à 35 min et les Tisseurs à 40 min. Leurs œufs grandissent et leurs adultes transforment l’habitat.</li><li><b>Explorez.</b> Molette ou flèches : profondeur. Glisser : déplacer. Maj + molette : zoomer. Alt + clic : inspecter une cellule ou un organisme. P : pause. Échap : annuler une capacité.</li></ol><button class="primary-button" data-close="guide">Laisser la vie inventer →</button></dialog>
+<script type="module" src="./main.mjs"></script></body></html>

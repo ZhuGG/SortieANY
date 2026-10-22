@@ -1,45 +1,60 @@
-# STRATE
+# STRATE α 0.2 — Le monde devient vivant
 
-Un jeu incremental de cellules en pixel art, dans une palette ivoire, mauve, prune, menthe et ambre.
+**Jouer : https://zhugg.github.io/SortieANY/**
 
-## Jouer
+Un clicker sandbox biologique en pixel art, dans une palette ivoire, mauve, prune, menthe et ambre. La version 0.2 refond le moteur et la progression ; elle commence une nouvelle partie. L’ancienne sauvegarde α 0.1 reste exportable dans les options, sans importer ses acquis.
 
-GitHub Pages : https://zhugg.github.io/SortieANY/
+## Six strates, six architectures
 
-- Cliquez dans le monde ou sur **Stimuler** pour produire de l’énergie et accélérer votre colonie.
-- Achetez les améliorations : impulsion, métabolisme, division, automatisation, membrane et recherche.
-- Utilisez la molette pour descendre, Maj + molette pour zoomer, ou faites glisser le terrain. La minicarte et les six strates sont aussi cliquables.
-- **Alt + clic** inspecte une cellule proche. Les vues Nutriments, Oxygène et Chaleur révèlent le milieu.
-- Les divisions découvrent sept mutations. Stabilisez-les pour débloquer de nouvelles branches ; deux mutations stabilisées ouvrent l’éditeur génétique.
-- **Implanter** crée une colonie à la position sélectionnée, dans la limite de profondeur de vos membranes.
-- **P** met en pause ; **Espace** stimule. Les options permettent d’exporter, importer et recréer le monde.
+1. **Le berceau** : bassins ouverts, roche sauge, lumière et photosynthèse.
+2. **Les jardins inversés** : racines suspendues, voûtes et teintes mauves.
+3. **La faille bleue** : colonnes verticales, ardoise et courants.
+4. **La mémoire des sols** : terrasses sédimentaires ocres et matière organique.
+5. **Les cathédrales** : géodes, arches et cristaux violets.
+6. **Le cœur du monde** : cheminées cuivrées, chaleur et gaz.
 
-## Simulation
+## Jouer et évoluer
 
-Carte procédurale de 256 × 1 536 unités, six strates, sept espèces, jusqu’à 20 000 cellules individuelles. La simulation tourne dans un Web Worker à pas fixe (12 Hz, vitesse ×1/×2/×4). Le métabolisme individuel est réparti en trois cohortes à 4 Hz, avec compensation du temps écoulé. Les substances diffusent sur une grille plus grossière ; terrain et cellules ont des représentations distinctes. Des listes spatiales contiguës limitent les interactions de prédation et de symbiose à 32 voisins par cellule.
+- Cliquer dans le monde ou sur **Stimuler** produit de l’énergie et accélère la branche sélectionnée à proximité.
+- Les adaptations sont propres à chaque lignée et visibles sur ses cellules : membranes, flagelles, segments, glandes, pigments et organes pulsants. Les paliers 1, 3 et 5 changent l’anatomie ; un aperçu avant/après accompagne les achats.
+- Les divisions découvrent des mutations. Stabilisez-les pour ouvrir d’autres branches ; deux mutations stabilisées donnent accès à l’hybridation de traits héritables.
+- **Oxygéner** libère des bulles après Chloroplastes niveau 1 ; **Dissoudre** ouvre les roches après Glandes sécrétrices niveau 1 ; **Tisser** forme des biofilms après Adhésion niveau 1. Les capacités exigent proximité, ressources et récupération.
+- Les premiers **Filtrants** deviennent disponibles à 30 minutes de simulation avec Adhésion niveau 2 ; les **Foreurs** à 35 minutes avec Glandes niveau 2 ; les **Tisseurs** à 40 minutes avec Adhésion niveau 2. Un œuf éclot après 60 secondes, puis grandit jusqu’au stade adulte. Les adultes disposent d’une capacité spécifique dans l’inspecteur.
+- Brouteurs et chasseurs sauvages se nourrissent, se déplacent, se reproduisent et retournent au milieu à leur mort.
 
-Les cellules possèdent âge, réserves, santé, génération, traits héritables et métabolisme. La photosynthèse, la consommation de nutriments et d’oxygène, les déchets, la décomposition, la prédation, les divisions et le stress thermique interagissent. Le modèle est une fiction biologique cohérente, pas un modèle scientifique validé.
+**Commandes :** molette ou flèches pour descendre, glisser pour déplacer la vue, Maj + molette pour zoomer, Alt + clic pour inspecter, P pour la pause, Espace pour stimuler, 1/2/3 pour les biocapacités, Échap pour annuler leur ciblage. L’atlas et la minicarte déplacent directement la vue.
 
-Les niveaux achetés sont permanents. Une extinction relance la lignée à partir de spores de secours. Les gains hors ligne utilisent le dernier rendement sauvegardé, sur 24 heures maximum, sans évolution ni crise pendant l’absence.
+## Physique et biologie
 
-## Développement
+Le terrain mesure 256 × 1 536 unités, sur une grille rocheuse de 128 × 768. L’eau et les gaz utilisent une grille de 32 × 192 dont les passages tiennent compte des faces rocheuses, même lorsqu’une paroi est plus fine que cette grille.
 
-Les fichiers du jeu sont servis directement. Aucun serveur applicatif, aucune installation de dépendances. Dans le projet local, les fichiers à servir sont regroupés dans `dist/` ; dans le dépôt GitHub Pages, ils sont publiés à la racine.
+L’eau descend, se répartit latéralement, remplit les bassins et transporte nutriments, oxygène dissous, carbone, déchets et chaleur. Les transferts conservent les quantités. Les sources, les échanges avec l’atmosphère et les réactions biologiques sont explicites. Les gaz comprennent O₂, CO₂, gaz anaérobies et composant inerte. Des poches remontent, déplacent l’eau, se dissolvent et s’accumulent sous les plafonds. Les biofilms freinent les échanges ; les sécrétions des foreurs modifient réellement le terrain. Le modèle reste une fiction biologique et une approximation de fluides adaptée au jeu.
+
+Les cellules cherchent de la nourriture, évitent les prédateurs, adhèrent et partagent leurs réserves selon leurs adaptations. Les organismes possèdent santé, réserves, habitat, génération et stades œuf/juvénile/adulte/cadavre. Une extinction de la lignée relance des spores sans retirer les améliorations acquises dans cette partie.
+
+## Son et assets Fal
+
+Trois planches bitmap ont été générées avec `fal-ai/flux-2/klein/9b`, puis détourées, réduites et harmonisées dans la palette du jeu. Huit effets de 1,5 s et une ambiance bouclable de 20 s proviennent de `fal-ai/elevenlabs/sound-effects/v2`. Les assets sont servis par GitHub Pages, sans appel à Fal pendant le jeu.
+
+Le plafond autorisé est **2 €**, essais compris. Au tarif vérifié lors de la génération : 3 × 1,048576 mégapixels × 0,006 USD, plus 32 secondes × 0,002 USD, soit **0,082874368 USD estimés**. La conversion de référence de la BCE du 21 octobre 2026 (1 EUR = 1,1234 USD) donne environ **0,074 €**, hors éventuels frais de conversion. Aucune génération supplémentaire ni reprise facturée n’a été lancée. Il s’agit d’une estimation tarifaire, pas d’un relevé de facturation. [Référence BCE](https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.eu.html).
+
+Les modèles, prompts et identifiants de génération figurent dans `assets/provenance.json`. La validation locale constate des atlas RGBA de 288 × 72 et des MP3 stéréo à 44,1 kHz (1,515 s et 20,036 s avec padding d’encodage). Volume général, effets, ambiance et sourdine sont réglables. Le son commence après une interaction ; quatre effets simultanés au maximum.
+
+## Sauvegarde et développement
+
+La partie α 0.2 utilise IndexedDB. Export/import JSON complets incluent terrain modifié, eau, gaz, biofilms, organismes et génotypes. Les gains hors ligne utilisent le dernier rendement sauvegardé, sur 24 heures maximum ; l’écologie et les déblocages chronologiques restent en pause pendant l’absence.
+
+Le projet local sert `dist/`. Dans GitHub Pages, son contenu est publié à la racine du dépôt. Aucune installation de dépendance n’est nécessaire.
 
 ```sh
 npm start
 npm run check
 npm test
+node tests/benchmark.mjs
 ```
 
-Ouvrir http://127.0.0.1:4173/. Les sauvegardes utilisent `localStorage` et peuvent être exportées en JSON. Les polices Google sont facultatives : les polices système prennent le relais en leur absence.
+Le calcul tourne dans un Web Worker : horloge du monde 12 Hz, fluides 4 Hz, cellules réparties en six cohortes à 2 Hz avec compensation du temps, organismes 2 Hz. Le rendu vise 30 images/s et ne dessine que les éléments visibles. Plafonds : 20 000 cellules et 128 organismes. Les vitesses ×2/×4 demandent davantage de calcul et peuvent ralentir sur une machine limitée.
 
-Pour GitHub Pages, publier le **contenu de `dist/` à la racine** de `main`, avec `.nojekyll`. Le fichier `sw.js` retire l’ancien service worker de SortieANY afin que les anciens visiteurs reçoivent le jeu.
+Les 18 tests couvrent architectures, déterminisme, transferts conservatifs, parois, gaz, biofilms, excavation, coûts et récupération des capacités, achats propres aux lignées, multicellularité, croissance, reproduction, prédation, décomposition, hérédité, extinction, import/export et absence protégée.
 
-## Vérifications
-
-Les tests couvrent : déterminisme, accessibilité des strates, stimulation, achats, divisions, recyclage, automatisation, mutations, génétique, profondeur, extinction, validation des imports, sauvegardes et gains hors ligne.
-
-La cible est 10 000 cellules sur navigateur PC. Le plafond de 20 000 est une limite de population, pas une garantie de fréquence sur tous les appareils. Les boutons ×2/×4 augmentent la cadence demandée ; le moteur limite le rattrapage pour préserver l’interface sur les machines lentes.
-
-Version alpha 0.1. La sauvegarde est locale à l’appareil et au navigateur.
+Mesure locale après chauffe, population initiale de 10 000 cellules et 128 organismes : 83 ms de calcul moyen, 73 ms médian et 199 ms au 95e percentile. Ces mesures dépendent de la machine et de sa charge ; ce ne sont pas une garantie de cadence. Les pics de calcul sont isolés du rendu.

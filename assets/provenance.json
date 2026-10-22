@@ -1,0 +1,104 @@
+{
+  "budget": {
+    "capEUR": 2,
+    "usdPerEUR": 1.1234,
+    "reference": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.eu.html",
+    "referenceDate": "2026-10-21",
+    "plannedUSD": 0.082874368,
+    "reservedUSD": 0.083,
+    "estimatedUSD": 0.082874368,
+    "estimatedEUR": 0.07377102367812,
+    "runs": 12,
+    "paidRetries": 0,
+    "billingNote": "Estimate from verified model rates; not an account billing receipt."
+  },
+  "assets": [
+    {
+      "name": "filter",
+      "path": "source/filter.png",
+      "url": "https://v3b.fal.media/files/b/0aaf6401/uyg3a8_YnE15x0bK3HMzr_HEJFC1jK.png",
+      "endpoint": "fal-ai/flux-2/klein/9b",
+      "request_id": "01a16332-6ccd-7072-8068-77a6339871a5",
+      "prompt": "Pixel art game asset on pure solid black background #000000, no text, no labels, no scenery, no shadows, no gradients, no glow. Exactly THREE isolated SIDE VIEW microscopic creatures arranged left to right in three equal columns, small juvenile then medium adult then elaborate evolved adult. All three share a single consistent identity. Crisp blocky square pixels, limited palette exclusively warm ivory #F3EDDD, pale mauve #D2B7DF, plum #6F527B, mint #A9CDB1, amber #E5B56B. Plenty of pure black padding between the three creatures. Each creature centered in its column. Game sprite concept sheet, readable at 48 pixels tall. a beautiful imaginary aquatic FILTER FEEDER microfauna, delicate oval translucent shell, paired feathery mint feeding fans on each side, ivory segmented body and lavender organs, an elegant living sieve."
+    },
+    {
+      "name": "borer",
+      "path": "source/borer.png",
+      "url": "https://v3b.fal.media/files/b/0aaf6401/kJywHtoK86AMlMBmfOoVC_C8kZJth3.png",
+      "endpoint": "fal-ai/flux-2/klein/9b",
+      "request_id": "01a16332-82eb-79d0-b459-526304655316",
+      "prompt": "Pixel art game asset on pure solid black background #000000, no text, no labels, no scenery, no shadows, no gradients, no glow. Exactly THREE isolated SIDE VIEW microscopic creatures arranged left to right in three equal columns, small juvenile then medium adult then elaborate evolved adult. All three share a single consistent identity. Crisp blocky square pixels, limited palette exclusively warm ivory #F3EDDD, pale mauve #D2B7DF, plum #6F527B, mint #A9CDB1, amber #E5B56B. Plenty of pure black padding between the three creatures. Each creature centered in its column. Game sprite concept sheet, readable at 48 pixels tall. an imaginary burrowing segmented WORM microfauna, elongated horizontal body, mauve armored segments, ivory mandibles and amber secretion glands at head, small paired appendages, evolved stage has a larger digging head."
+    },
+    {
+      "name": "weaver",
+      "path": "source/weaver.png",
+      "url": "https://v3b.fal.media/files/b/0aaf6402/WyVA0Dbkaale43aj9SkcW_vuVFrPp8.png",
+      "endpoint": "fal-ai/flux-2/klein/9b",
+      "request_id": "01a16332-97b1-73b2-a33e-f5ee4f1c12b4",
+      "prompt": "Pixel art game asset on pure solid black background #000000, no text, no labels, no scenery, no shadows, no gradients, no glow. Exactly THREE isolated SIDE VIEW microscopic creatures arranged left to right in three equal columns, small juvenile then medium adult then elaborate evolved adult. All three share a single consistent identity. Crisp blocky square pixels, limited palette exclusively warm ivory #F3EDDD, pale mauve #D2B7DF, plum #6F527B, mint #A9CDB1, amber #E5B56B. Plenty of pure black padding between the three creatures. Each creature centered in its column. Game sprite concept sheet, readable at 48 pixels tall. an imaginary BIOFILM WEAVER microfauna, radial pear shaped lavender body with flowing fine mint tendrils, ivory central nucleus, expanded adult has branching tendrils and small amber nodules, delicate living architect."
+    },
+    {
+      "name": "impulse",
+      "path": "audio/impulse.mp3",
+      "url": "https://v3b.fal.media/files/b/0aaf6406/5y6SvN0gk50UYQo4uPNhN_sound_effect.mp3",
+      "endpoint": "fal-ai/elevenlabs/sound-effects/v2",
+      "request_id": "01a16333-25e9-7fe2-87ea-a0b711c9f9f7"
+    },
+    {
+      "name": "division",
+      "path": "audio/division.mp3",
+      "url": "https://v3b.fal.media/files/b/0aaf6406/fSNywkC15F3LG5co04TZf_sound_effect.mp3",
+      "endpoint": "fal-ai/elevenlabs/sound-effects/v2",
+      "request_id": "01a16333-2e45-77f3-b0d2-d263fc2992d3"
+    },
+    {
+      "name": "mutation",
+      "path": "audio/mutation.mp3",
+      "url": "https://v3b.fal.media/files/b/0aaf6406/RUyBp3F4GTzK1BwhHdz0C_sound_effect.mp3",
+      "endpoint": "fal-ai/elevenlabs/sound-effects/v2",
+      "request_id": "01a16333-35c1-7d21-a361-9cd83ac117e6"
+    },
+    {
+      "name": "upgrade",
+      "path": "audio/upgrade.mp3",
+      "url": "https://v3b.fal.media/files/b/0aaf6406/HhW14EXgGXtzManIfc2kt_sound_effect.mp3",
+      "endpoint": "fal-ai/elevenlabs/sound-effects/v2",
+      "request_id": "01a16333-405b-7473-9af1-857636308480"
+    },
+    {
+      "name": "water",
+      "path": "audio/water.mp3",
+      "url": "https://v3b.fal.media/files/b/0aaf6406/gpb1cq9Wvlkx8pe2NXU6v_sound_effect.mp3",
+      "endpoint": "fal-ai/elevenlabs/sound-effects/v2",
+      "request_id": "01a16333-47d3-7bc3-bb2d-876eb7f87368"
+    },
+    {
+      "name": "gas",
+      "path": "audio/gas.mp3",
+      "url": "https://v3b.fal.media/files/b/0aaf6407/cpVvDT9vZZPtrx5hHrgHV_sound_effect.mp3",
+      "endpoint": "fal-ai/elevenlabs/sound-effects/v2",
+      "request_id": "01a16333-5058-71c1-963e-d5f2d9048f5b"
+    },
+    {
+      "name": "predation",
+      "path": "audio/predation.mp3",
+      "url": "https://v3b.fal.media/files/b/0aaf6407/C_BeUQa_gY5pJ7ZZCrRVl_sound_effect.mp3",
+      "endpoint": "fal-ai/elevenlabs/sound-effects/v2",
+      "request_id": "01a16333-57fe-7ff3-8402-70f6b7f467ae"
+    },
+    {
+      "name": "ability",
+      "path": "audio/ability.mp3",
+      "url": "https://v3b.fal.media/files/b/0aaf6407/Kq41c22akQL6iCwPuWmK2_sound_effect.mp3",
+      "endpoint": "fal-ai/elevenlabs/sound-effects/v2",
+      "request_id": "01a16333-607b-7230-a12b-7fc99660633a"
+    },
+    {
+      "name": "ambient",
+      "path": "audio/ambient.mp3",
+      "url": "https://v3b.fal.media/files/b/0aaf6408/J1IsLL2f9gLjUGVsvloOv_sound_effect.mp3",
+      "endpoint": "fal-ai/elevenlabs/sound-effects/v2",
+      "request_id": "01a16333-6a7b-79f3-87ab-ea5e3ebf1948"
+    }
+  ]
+}

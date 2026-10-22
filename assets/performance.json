@@ -1,0 +1,9 @@
+{
+  "cellsRequested": 10000,
+  "organisms": 128,
+  "meanMs": 83,
+  "medianMs": 73,
+  "p95Ms": 199,
+  "targetBudgetMs": 83,
+  "note": "Local warm benchmark; hardware/load dependent."
+}
